@@ -6,24 +6,35 @@ import StandingsTable, {
   renderConstructor,
   renderDriver,
 } from '../components/standings/StandingsTable'
+import Layout from '../components/ui/Layout'
+import { PageHeader, SubHeader } from '../components/ui/Text'
 import { getCurrentStandings } from '../lib/standings'
 // import styles from '../styles/Home.module.css'
 
 export default function Home({ driverStandings, constructorStandings }) {
   return (
-    <div>
-      <h1>Next F1</h1>
-      <StandingsTable
-        standings={driverStandings}
-        header={DRIVER_STANDING_HEADER}
-        renderRow={renderDriver}
-      />
-      <StandingsTable
-        standings={constructorStandings}
-        header={CONSTRUCTOR_STANDING_HEADER}
-        renderRow={renderConstructor}
-      />
-    </div>
+    <Layout>
+      <PageHeader>Next F1</PageHeader>
+      <SubHeader>Home Page</SubHeader>
+      <div
+        className={
+          'flex text-sm sm:text-base flex-col lg:flex-row w-full items-center lg:items-start content-between gap-5'
+        }
+      >
+        <StandingsTable
+          title={'Driver Standings'}
+          standings={driverStandings}
+          header={DRIVER_STANDING_HEADER}
+          renderRow={renderDriver}
+        />
+        <StandingsTable
+          title={'Constructor Standings'}
+          standings={constructorStandings}
+          header={CONSTRUCTOR_STANDING_HEADER}
+          renderRow={renderConstructor}
+        />
+      </div>
+    </Layout>
   )
 }
 
