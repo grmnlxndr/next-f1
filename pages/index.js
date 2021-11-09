@@ -14,8 +14,8 @@ import { getCurrentStandings } from '../lib/standings'
 export default function Home({ driverStandings, constructorStandings }) {
   return (
     <Layout>
-      <PageHeader>Next F1</PageHeader>
-      <SubHeader>Home Page</SubHeader>
+      <PageHeader className={'mb-2'}>Next F1</PageHeader>
+      <SubHeader className={'mb-4'}>Home Page</SubHeader>
       <div
         className={
           'flex text-sm sm:text-base flex-col lg:flex-row w-full items-center lg:items-start content-between gap-5'
