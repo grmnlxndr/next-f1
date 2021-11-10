@@ -1,9 +1,10 @@
+import { useState } from 'react'
 import Card from '../ui/Card'
 import { Table, Td, Th } from '../ui/Table'
 
 export const DRIVER_STANDING_HEADER = (
   <tr>
-    <Th>Position</Th>
+    <Th>Pos</Th>
     <Th>Driver</Th>
     <Th>Wins</Th>
     <Th>Points</Th>
@@ -21,7 +22,7 @@ export const renderDriver = (driver) => (
 
 export const CONSTRUCTOR_STANDING_HEADER = (
   <tr>
-    <Th>Position</Th>
+    <Th>Pos</Th>
     <Th>Constructor</Th>
     <Th>Wins</Th>
     <Th>Points</Th>
@@ -37,20 +38,45 @@ export const renderConstructor = (constructor) => (
   </tr>
 )
 
-const StandingsTable = ({ title, standings, header, renderRow }) => {
+const StandingsTable = ({
+  title,
+  standings,
+  header,
+  renderRow,
+  collapsible,
+}) => {
+  const [collapsed, setCollapsed] = useState(true)
+
+  const displayStandings =
+    collapsible && collapsed ? standings.slice(0, 5) : standings
+
+  const handleCollapseButton = () => {
+    setCollapsed(!collapsed)
+  }
+
   return (
     <Card>
       <p
         className={
-          'w-full font-semibold text-lg text-center text-teal-500 mb-2 md:mb-4'
+          'w-full font-semibold text-lg text-center text-teal-700 mb-2 md:mb-4'
         }
       >
         {title}
       </p>
       <Table>
         <thead>{header}</thead>
-        <tbody>{standings.map(renderRow)}</tbody>
+        <tbody>{displayStandings.map(renderRow)}</tbody>
       </Table>
+      {collapsible && (
+        <button
+          className={
+            'block mx-auto p-1 mt-1 text-teal-700 hover:text-teal-600 underline font-semibold'
+          }
+          onClick={handleCollapseButton}
+        >
+          {collapsed ? 'See more' : 'See less'}
+        </button>
+      )}
     </Card>
   )
 }
