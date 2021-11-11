@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
       <main className={'mx-auto w-full max-w-5xl p-4 sm:p-6 lg:p-8'}>
         {children}
       </main>
-      <footer className={'text-center text-teal-500 p-5'}>
+      <footer className={'w-full text-center text-white p-5 bg-teal-600 border-t-2 border-teal-800'}>
         Data provided by{' '}
         <a
           className={'underline'}

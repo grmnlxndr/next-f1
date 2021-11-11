@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Card from '../ui/Card'
 import { Table, Td, Th } from '../ui/Table'
 
 export const DRIVER_STANDING_HEADER = (
@@ -38,6 +37,22 @@ export const renderConstructor = (constructor) => (
   </tr>
 )
 
+export const RACE_STANDING_HEADER = (
+  <tr>
+    <Th>Pos</Th>
+    <Th>Driver</Th>
+    <Th>Time</Th>
+  </tr>
+)
+
+export const renderRaceDriver = (driver) => (
+  <tr key={driver.driverId}>
+    <Td className={'text-center'}>{driver.position}</Td>
+    <Td className={'text-center'}>{driver.driverName}</Td>
+    <Td className={'text-center'}>{driver.time}</Td>
+  </tr>
+)
+
 const StandingsTable = ({
   title,
   standings,
@@ -55,14 +70,16 @@ const StandingsTable = ({
   }
 
   return (
-    <Card>
-      <p
-        className={
-          'w-full font-semibold text-lg text-center text-teal-700 mb-2 md:mb-4'
-        }
-      >
-        {title}
-      </p>
+    <>
+      {title && (
+        <p
+          className={
+            'w-full font-semibold text-lg text-center text-teal-700 mb-2 md:mb-4'
+          }
+        >
+          {title}
+        </p>
+      )}
       <Table>
         <thead>{header}</thead>
         <tbody>{displayStandings.map(renderRow)}</tbody>
@@ -77,7 +94,7 @@ const StandingsTable = ({
           {collapsed ? 'See more' : 'See less'}
         </button>
       )}
-    </Card>
+    </>
   )
 }
 
