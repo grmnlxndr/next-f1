@@ -1,4 +1,5 @@
-import Button from './Button'
+import Link from 'next/link'
+import LinkButton from './LinkButton'
 
 const Navbar = () => {
   return (
@@ -8,14 +9,20 @@ const Navbar = () => {
           'flex-grow font-semibold text-center md:text-left text-5xl text-teal-800'
         }
       >
-        Next F1
+        <Link href={'/'}>
+          <a className={'hover:text-teal-600'}>Next F1</a>
+        </Link>
       </div>
       <ul className={'hidden md:flex md:flex-row md:items-center md:gap-5'}>
         <li>
-          <Button>Standings</Button>
+          <Link href={'/'} passHref>
+            <LinkButton>Standings</LinkButton>
+          </Link>
         </li>
         <li>
-          <Button>Drivers</Button>
+          <Link href={'/drivers'} passHref>
+            <LinkButton>Drivers</LinkButton>
+          </Link>
         </li>
       </ul>
     </nav>
