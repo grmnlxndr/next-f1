@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Link from 'next/link'
 import { Table, Td, Th } from '../ui/Table'
 
 export const DRIVER_STANDING_HEADER = (
@@ -13,7 +14,11 @@ export const DRIVER_STANDING_HEADER = (
 export const renderDriver = (driver) => (
   <tr key={driver.driverId}>
     <Td className={'text-center'}>{driver.position}</Td>
-    <Td className={'text-center'}>{driver.driverName}</Td>
+    <Td className={'text-center'}>
+      <Link href={`/drivers/${driver.driverId}`}>
+        <a className={'hover:underline'}>{driver.driverName}</a>
+      </Link>
+    </Td>
     <Td className={'text-center'}>{driver.wins}</Td>
     <Td className={'text-center'}>{driver.points}</Td>
   </tr>
@@ -48,7 +53,11 @@ export const RACE_STANDING_HEADER = (
 export const renderRaceDriver = (driver) => (
   <tr key={driver.driverId}>
     <Td className={'text-center'}>{driver.position}</Td>
-    <Td className={'text-center'}>{driver.driverName}</Td>
+    <Td className={'text-center'}>
+      <Link href={`/drivers/${driver.driverId}`}>
+        <a className={'hover:underline'}>{driver.driverName}</a>
+      </Link>
+    </Td>
     <Td className={'text-center'}>{driver.time}</Td>
   </tr>
 )
