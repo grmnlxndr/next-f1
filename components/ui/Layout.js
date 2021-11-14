@@ -1,21 +1,20 @@
+import Head from 'next/head'
 import Navbar from './Navbar'
+import styles from './Layout.module.css'
 
 const Layout = ({ children }) => {
   return (
-    <div
-      className={'flex flex-col items-center w-full min-h-screen bg-teal-50'}
-    >
-      <header className={'w-full flex-growtext-center text-teal-500 p-5'}>
+    <div className={styles.layoutWrapper}>
+      <Head>
+        <title>Next F1</title>
+        <meta name="description" content="A Nextjs app about F1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <header className={styles.header}>
         <Navbar />
       </header>
-      <main className={'mx-auto w-full max-w-5xl p-4 sm:p-6 lg:p-8 flex-grow'}>
-        {children}
-      </main>
-      <footer
-        className={
-          'w-full text-center text-white p-5 bg-teal-600 border-t-2 border-teal-800'
-        }
-      >
+      <main className={styles.main}>{children}</main>
+      <footer className={styles.footer}>
         Data provided by{' '}
         <a
           className={'underline'}

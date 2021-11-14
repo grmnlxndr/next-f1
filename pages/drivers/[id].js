@@ -24,8 +24,6 @@ export default function DriverDetailsPage({
     description,
   },
 }) {
-  console.log(description)
-
   return (
     <Layout>
       <SubHeader className={'mb-5'}>Driver Details Page</SubHeader>
@@ -40,9 +38,7 @@ export default function DriverDetailsPage({
               alt={driverName}
             />
             {ImageAttribution && (
-              <p className={'w-full text-xs text-gray-500 text-center'}>
-                {ImageAttribution}
-              </p>
+              <p className={styles.imageAttribution}>{ImageAttribution}</p>
             )}
           </div>
         )}

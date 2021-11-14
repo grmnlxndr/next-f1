@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import dayjs from 'dayjs'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
 import Image from 'next/image'
@@ -5,19 +6,16 @@ import StandingsTable, {
   RACE_STANDING_HEADER,
   renderRaceDriver,
 } from '../standings/StandingsTable'
+import styles from './RaceSnapshot.module.css'
 
 dayjs.extend(localizedFormat)
 
 const RaceSnapshot = ({ race, title }) => {
   return (
     <>
-      <div
-        className={
-          'w-full flex flex-col lg:flex-row items-center lg:items-start justify-center gap-5 p-3'
-        }
-      >
+      <div className={styles.mainWrapper}>
         {race.image && (
-          <div className={'w-full lg:w-1/3 p-5'}>
+          <div className={styles.circuitImage}>
             <Image
               height={race.image.height}
               width={race.image.width}
@@ -27,26 +25,20 @@ const RaceSnapshot = ({ race, title }) => {
           </div>
         )}
         <div className={'flex-grow'}>
-          <p
-            className={
-              'w-full font-semibold text-lg text-center text-teal-700 mb-2 md:mb-4'
-            }
-          >
-            {title}
-          </p>
-          <p className={'w-full font-semibold text-2xl text-teal-700 mb-2'}>
+          <p className={styles.title}>{title}</p>
+          <p className={styles.raceTitle}>
             {race.season} {race.name}
           </p>
-          <p className={'w-full text-md text-gray-600 mb-1'}>
+          <p className={classNames(styles.text, styles.name)}>
             {race.circuitName}
           </p>
-          <p className={'w-full text-sm text-gray-600 mb-2 italic'}>
+          <p className={classNames(styles.text, styles.time)}>
             Race time: {dayjs(race.dateTime).format('l LT')}
           </p>
         </div>
       </div>
       {race.results && (
-        <div className={'text-sm text-teal-700'}>
+        <div className={styles.table}>
           <StandingsTable
             header={RACE_STANDING_HEADER}
             standings={race.results}

@@ -3,7 +3,11 @@
 }
 
 .card .imageWrapper {
-  @apply w-full lg:w-80;
+  @apply w-full lg:w-80 flex flex-col items-center;
+}
+
+.imageAttribution {
+  @apply w-full text-xs text-gray-500 text-center mt-2;
 }
 
 .card .textWrapper {
