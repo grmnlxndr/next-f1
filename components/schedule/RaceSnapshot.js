@@ -21,7 +21,7 @@ const RaceSnapshot = ({ race, title }) => {
             <Image
               height={race.image.height}
               width={race.image.width}
-              src={race.image.source}
+              src={race.image.url}
               alt={race.circuitName}
             />
           </div>

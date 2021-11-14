@@ -1,0 +1,23 @@
+.card {
+  @apply flex flex-col lg:flex-row items-center lg:items-start gap-5 p-5 mb-5;
+}
+
+.card .imageWrapper {
+  @apply w-full lg:w-80;
+}
+
+.card .textWrapper {
+  @apply flex-grow self-stretch flex flex-col justify-between;
+}
+
+.text {
+  @apply mb-3 w-full text-gray-700;
+}
+
+.description p {
+  @apply text-justify;
+}
+
+.description p:not(:last-child) {
+  @apply mb-2;
+}

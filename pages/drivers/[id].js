@@ -6,28 +6,47 @@ import { SubHeader } from '../../components/ui/Text'
 import { getCurrentDriverIDs, getDriverById } from '../../lib/drivers'
 import Card from '../../components/ui/Card'
 import LinkButton from '../../components/ui/LinkButton'
+import styles from '../../styles/DriverDetails.module.css'
+import classNames from 'classnames'
 
 dayjs.extend(localizedFormat)
 
 export default function DriverDetailsPage({
-  driver: { image, driverName, nationality, number, code, dateOfBirth, url },
+  driver: {
+    image,
+    driverName,
+    nationality,
+    number,
+    code,
+    dateOfBirth,
+    url,
+    ImageAttribution,
+    description,
+  },
 }) {
+  console.log(description)
+
   return (
     <Layout>
       <SubHeader className={'mb-5'}>Driver Details Page</SubHeader>
-      <Card className={'flex flex-col lg:flex-row items-center gap-5 p-5 mb-5'}>
+      <Card className={styles.card}>
         {image && (
-          <div className={'w-full lg:w-80'}>
+          <div className={styles.imageWrapper}>
             <Image
               className={'rounded-lg'}
-              src={image.source}
+              src={image.url}
               width={image.width}
               height={image.height}
               alt={driverName}
             />
+            {ImageAttribution && (
+              <p className={'w-full text-xs text-gray-500 text-center'}>
+                {ImageAttribution}
+              </p>
+            )}
           </div>
         )}
-        <div className={'flex-grow self-stretch flex flex-col justify-between'}>
+        <div className={styles.textWrapper}>
           <div>
             <h2
               className={
@@ -37,28 +56,34 @@ export default function DriverDetailsPage({
               {driverName}
             </h2>
             {nationality && (
-              <p className={'mb-3 text-gray-700'}>
+              <p className={styles.text}>
                 <span className={'font-semibold'}>Nationality:</span>{' '}
                 {nationality}
               </p>
             )}
             {dateOfBirth && (
-              <p className={'mb-3 text-gray-700'}>
+              <p className={styles.text}>
                 <span className={'font-semibold'}>Date of Birth:</span>{' '}
                 {dayjs(dateOfBirth).format('l')}
               </p>
             )}
             {number && (
-              <p className={'mb-3 text-gray-700'}>
+              <p className={styles.text}>
                 <span className={'font-semibold'}>Number:</span> {number}
               </p>
             )}
             {code && (
-              <p className={'mb-3 text-gray-700'}>
+              <p className={styles.text}>
                 <span className={'font-semibold'}>Code:</span> {code}
               </p>
             )}
           </div>
+          {description && (
+            <div
+              className={classNames(styles.text, styles.description)}
+              dangerouslySetInnerHTML={{ __html: description }}
+            />
+          )}
           {url && (
             <div className={'w-full text-center justify-self-end py-4'}>
               <LinkButton
