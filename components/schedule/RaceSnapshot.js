@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import classNames from 'classnames'
 import dayjs from 'dayjs'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
@@ -30,7 +31,9 @@ const RaceSnapshot = ({ race, title }) => {
             {race.season} {race.name}
           </p>
           <p className={classNames(styles.text, styles.name)}>
-            {race.circuitName}
+            <Link href={`/circuits/${race.circuitId}`}>
+              <a className={'hover:underline'}>{race.circuitName}</a>
+            </Link>
           </p>
           <p className={classNames(styles.text, styles.time)}>
             Race time: {dayjs(race.dateTime).format('l LT')}

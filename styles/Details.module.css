@@ -14,6 +14,10 @@
   @apply flex-grow self-stretch flex flex-col justify-between;
 }
 
+.title {
+  @apply text-center font-semibold text-2xl text-teal-800 mb-5;
+}
+
 .text {
   @apply mb-3 w-full text-gray-700;
 }

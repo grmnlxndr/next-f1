@@ -1,0 +1,15 @@
+.navbar {
+  @apply mx-auto w-full max-w-7xl flex flex-row p-5;
+}
+
+.brandWrapper {
+  @apply flex-grow font-semibold text-center md:text-left text-5xl text-teal-800;
+}
+
+.brand {
+  @apply hover:text-teal-600;
+}
+
+.linksWrapper {
+  @apply hidden md:flex md:flex-row md:items-center md:gap-5;
+}

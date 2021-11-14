@@ -1,25 +1,20 @@
 import classNames from 'classnames'
+import styles from './Table.module.css'
 
 export const Table = ({ children, className, ...props }) => (
-  <table className={classNames('w-full table-auto', className)} {...props}>
+  <table className={classNames(styles.table, className)} {...props}>
     {children}
   </table>
 )
 
 export const Th = ({ children, className, ...props }) => (
-  <th
-    className={classNames(
-      'border-b bg-teal-600 border-teal-700 text-white p-1',
-      className
-    )}
-    {...props}
-  >
+  <th className={classNames(styles.tableHeading, className)} {...props}>
     {children}
   </th>
 )
 
 export const Td = ({ children, className, ...props }) => (
-  <td className={classNames('text-teal-700 p-1', className)} {...props}>
+  <td className={classNames(styles.tableCell, className)} {...props}>
     {children}
   </td>
 )

@@ -1,0 +1,11 @@
+.table {
+  @apply w-full table-auto;
+}
+
+.tableHeading {
+  @apply border-b bg-teal-600 border-teal-700 text-white p-1;
+}
+
+.tableCell {
+  @apply text-teal-700 p-1;
+}

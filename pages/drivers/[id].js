@@ -6,7 +6,7 @@ import { SubHeader } from '../../components/ui/Text'
 import { getCurrentDriverIDs, getDriverById } from '../../lib/drivers'
 import Card from '../../components/ui/Card'
 import LinkButton from '../../components/ui/LinkButton'
-import styles from '../../styles/DriverDetails.module.css'
+import styles from '../../styles/Details.module.css'
 import classNames from 'classnames'
 
 dayjs.extend(localizedFormat)
@@ -119,5 +119,6 @@ export async function getStaticProps({ params }) {
     props: {
       driver,
     },
+    revalidate: 24 * 60 * 60,
   }
 }
