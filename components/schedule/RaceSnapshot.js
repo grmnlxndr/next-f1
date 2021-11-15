@@ -5,13 +5,15 @@ import localizedFormat from 'dayjs/plugin/localizedFormat'
 import Image from 'next/image'
 import StandingsTable, {
   RACE_STANDING_HEADER,
+  RACE_STANDING_HEADER_WITH_CONSTRUCTOR,
   renderRaceDriver,
+  renderRaceDriverAndConstructor,
 } from '../standings/StandingsTable'
 import styles from './RaceSnapshot.module.css'
 
 dayjs.extend(localizedFormat)
 
-const RaceSnapshot = ({ race, title }) => {
+const RaceSnapshot = ({ race, title, collapsible = true, withConstructor }) => {
   return (
     <>
       <div className={styles.mainWrapper}>
@@ -43,10 +45,18 @@ const RaceSnapshot = ({ race, title }) => {
       {race.results && (
         <div className={styles.table}>
           <StandingsTable
-            header={RACE_STANDING_HEADER}
+            header={
+              withConstructor
+                ? RACE_STANDING_HEADER_WITH_CONSTRUCTOR
+                : RACE_STANDING_HEADER
+            }
             standings={race.results}
-            renderRow={renderRaceDriver}
-            collapsible
+            renderRow={
+              withConstructor
+                ? renderRaceDriverAndConstructor
+                : renderRaceDriver
+            }
+            collapsible={collapsible}
           />
         </div>
       )}

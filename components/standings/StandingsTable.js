@@ -62,6 +62,32 @@ export const renderRaceDriver = (driver) => (
   </tr>
 )
 
+export const RACE_STANDING_HEADER_WITH_CONSTRUCTOR = (
+  <tr>
+    <Th>Pos</Th>
+    <Th>Driver</Th>
+    <Th>Constructor</Th>
+    <Th>Time</Th>
+  </tr>
+)
+
+export const renderRaceDriverAndConstructor = (driver) => (
+  <tr key={driver.driverId}>
+    <Td className={'text-center'}>{driver.position}</Td>
+    <Td className={'text-center'}>
+      <Link href={`/drivers/${driver.driverId}`}>
+        <a className={'hover:underline'}>{driver.driverName}</a>
+      </Link>
+    </Td>
+    <Td className={'text-center'}>
+      <Link href={`/constructors/${driver.constructorId}`}>
+        <a className={'hover:underline'}>{driver.constructorName}</a>
+      </Link>
+    </Td>
+    <Td className={'text-center'}>{driver.time}</Td>
+  </tr>
+)
+
 const StandingsTable = ({
   title,
   standings,
