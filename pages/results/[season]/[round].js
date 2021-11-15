@@ -12,7 +12,12 @@ export default function ResultsDetailsPage({ result }) {
     <Layout>
       <SubHeader className={'mb-5'}>Result Details</SubHeader>
       <Card>
-        <RaceSnapshot race={result} withConstructor collapsible={false} />
+        <RaceSnapshot
+          race={result}
+          withConstructor
+          collapsible={false}
+          noLink
+        />
       </Card>
     </Layout>
   )

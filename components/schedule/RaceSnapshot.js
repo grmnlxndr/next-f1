@@ -13,7 +13,33 @@ import styles from './RaceSnapshot.module.css'
 
 dayjs.extend(localizedFormat)
 
-const RaceSnapshot = ({ race, title, collapsible = true, withConstructor }) => {
+const RaceSnapshot = ({
+  race,
+  title,
+  collapsible = true,
+  withConstructor,
+  noLink,
+}) => {
+  let Name
+
+  if (race.results && !noLink) {
+    Name = (
+      <p className={styles.raceTitle}>
+        <Link href={`/results/${race.season}/${race.round}`}>
+          <a className={'hover:underline'}>
+            {race.season} {race.name}
+          </a>
+        </Link>
+      </p>
+    )
+  } else {
+    Name = (
+      <p className={styles.raceTitle}>
+        {race.season} {race.name}
+      </p>
+    )
+  }
+
   return (
     <>
       <div className={styles.mainWrapper}>
@@ -29,9 +55,7 @@ const RaceSnapshot = ({ race, title, collapsible = true, withConstructor }) => {
         )}
         <div className={'flex-grow'}>
           <p className={styles.title}>{title}</p>
-          <p className={styles.raceTitle}>
-            {race.season} {race.name}
-          </p>
+          {Name}
           <p className={classNames(styles.text, styles.name)}>
             <Link href={`/circuits/${race.circuitId}`}>
               <a className={'hover:underline'}>{race.circuitName}</a>
