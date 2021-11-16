@@ -53,7 +53,7 @@ const RaceSnapshot = ({
             />
           </div>
         )}
-        <div className={'flex-grow'}>
+        <div className={'flex-grow w-full'}>
           <p className={styles.title}>{title}</p>
           {Name}
           <p className={classNames(styles.text, styles.name)}>

@@ -3,7 +3,7 @@
 }
 
 .header {
-  @apply w-full flex-grow text-center text-teal-500 p-5;
+  @apply w-full text-center text-teal-500 p-5;
 }
 
 .main {

@@ -12,6 +12,9 @@ module.exports = {
         emerald: colors.emerald,
         teal: colors.teal,
       },
+      spacing: {
+        18: '4.5rem',
+      },
     },
   },
   variants: {
