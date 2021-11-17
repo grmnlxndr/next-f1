@@ -12,7 +12,7 @@ const Navbar = () => {
       </div>
       <ul className={styles.linksWrapper}>
         <li>
-          <Link href={'/drivers'} passHref>
+          <Link href={'/driver-lists/current'} passHref>
             <LinkButton>Drivers</LinkButton>
           </Link>
         </li>
