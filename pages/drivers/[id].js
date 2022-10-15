@@ -8,6 +8,7 @@ import Card from '../../components/ui/Card'
 import LinkButton from '../../components/ui/LinkButton'
 import styles from '../../styles/Details.module.css'
 import classNames from 'classnames'
+import { PrismicRichText } from '@prismicio/react'
 
 dayjs.extend(localizedFormat)
 
@@ -20,10 +21,11 @@ export default function DriverDetailsPage({
     code,
     dateOfBirth,
     url,
-    ImageAttribution,
+    image_attribution: ImageAttribution,
     description,
   },
 }) {
+
   return (
     <Layout>
       <SubHeader className={'mb-5'}>Driver Details Page</SubHeader>
@@ -33,8 +35,8 @@ export default function DriverDetailsPage({
             <Image
               className={'rounded-lg'}
               src={image.url}
-              width={image.width}
-              height={image.height}
+              width={image.dimensions.width}
+              height={image.dimensions.height}
               alt={driverName}
             />
             {ImageAttribution && (
@@ -75,10 +77,9 @@ export default function DriverDetailsPage({
             )}
           </div>
           {description && (
-            <div
-              className={classNames(styles.text, styles.description)}
-              dangerouslySetInnerHTML={{ __html: description }}
-            />
+            <div className={classNames(styles.text, styles.description)}>
+              <PrismicRichText field={description} />
+            </div>
           )}
           {url && (
             <div className={'w-full text-center justify-self-end py-4'}>

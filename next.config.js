@@ -1,6 +1,7 @@
 module.exports = {
+  swcMinify: true,
   reactStrictMode: true,
   images: {
-    domains: ['upload.wikimedia.org', 'res.cloudinary.com'],
+    domains: ['upload.wikimedia.org', 'res.cloudinary.com', 'images.prismic.io'],
   },
 }

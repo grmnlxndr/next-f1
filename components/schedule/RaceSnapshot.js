@@ -46,8 +46,8 @@ const RaceSnapshot = ({
         {race.image && (
           <div className={styles.circuitImage}>
             <Image
-              height={race.image.height}
-              width={race.image.width}
+              height={race.image.dimensions.height}
+              width={race.image.dimensions.width}
               src={race.image.url}
               alt={race.circuitName}
             />

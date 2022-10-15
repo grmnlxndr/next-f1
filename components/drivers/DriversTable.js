@@ -5,11 +5,11 @@ import classNames from 'classnames'
 const DriverRow = ({ driver }) => {
   return (
     <>
-      {driver.thumbnail && (
+      {driver.image?.url && (
         <div className={'relative h-12 lg:h-14 w-14 lg:w-16'}>
           <Image
             className={'rounded'}
-            src={driver.thumbnail.url}
+            src={driver.image.url}
             alt={driver.driverName}
             layout={'fill'}
             objectFit={'cover'}
@@ -18,8 +18,8 @@ const DriverRow = ({ driver }) => {
       )}
       <div
         className={classNames(
-          { 'pl-16': !driver.thumbnail },
-          { 'lg:pl-18': !driver.thumbnail },
+          { 'pl-16': !driver.image?.url },
+          { 'lg:pl-18': !driver.image?.url },
           'font-medium text-teal-800 lg:text-xl'
         )}
       >

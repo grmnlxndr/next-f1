@@ -1,3 +1,4 @@
+import { PrismicRichText } from '@prismicio/react'
 import classNames from 'classnames'
 import Image from 'next/image'
 import Card from '../../components/ui/Card'
@@ -13,7 +14,7 @@ import styles from '../../styles/Details.module.css'
 export default function ConstructorDetailsPage({
   constructor: {
     image,
-    ImageAttribution,
+    image_attribution: ImageAttribution,
     name,
     Name,
     nationality,
@@ -29,8 +30,8 @@ export default function ConstructorDetailsPage({
           <div className={styles.imageWrapper}>
             <Image
               src={image.url}
-              width={image.width}
-              height={image.height}
+              width={image.dimensions.width}
+              height={image.dimensions.height}
               alt={Name || name}
             />
             {ImageAttribution && (
@@ -49,10 +50,9 @@ export default function ConstructorDetailsPage({
             )}
           </div>
           {description && (
-            <div
-              className={classNames(styles.text, styles.description)}
-              dangerouslySetInnerHTML={{ __html: description }}
-            />
+            <div className={classNames(styles.text, styles.description)}>
+              <PrismicRichText field={description} />
+            </div>
           )}
           {url && (
             <div className={'w-full text-center justify-self-end py-4'}>
