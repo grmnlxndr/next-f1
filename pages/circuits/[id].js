@@ -1,3 +1,4 @@
+import { PrismicRichText } from '@prismicio/react'
 import classNames from 'classnames'
 import Image from 'next/image'
 import Card from '../../components/ui/Card'
@@ -8,7 +9,14 @@ import { getCircuitById, getCurrentCircuitIDs } from '../../lib/schedule'
 import styles from '../../styles/Details.module.css'
 
 export default function CircuitDetailsPage({
-  circuit: { image, ImageAttribution, circuitName, country, description, url },
+  circuit: {
+    image,
+    image_attribution: ImageAttribution,
+    circuitName,
+    country,
+    description,
+    url,
+  },
 }) {
   return (
     <Layout>
@@ -19,8 +27,8 @@ export default function CircuitDetailsPage({
             <Image
               className={'rounded-lg'}
               src={image.url}
-              width={image.width}
-              height={image.height}
+              width={image.dimensions.width}
+              height={image.dimensions.height}
               alt={circuitName}
             />
             {ImageAttribution && (
@@ -38,10 +46,9 @@ export default function CircuitDetailsPage({
             )}
           </div>
           {description && (
-            <div
-              className={classNames(styles.text, styles.description)}
-              dangerouslySetInnerHTML={{ __html: description }}
-            />
+            <div className={classNames(styles.text, styles.description)}>
+              <PrismicRichText field={description} />
+            </div>
           )}
           {url && (
             <div className={'w-full text-center justify-self-end py-4'}>
