@@ -26,7 +26,6 @@ export default function DriverDetailsPage({
   },
 }) {
 
-  console.log(image)
   return (
     <Layout>
       <SubHeader className={'mb-5'}>Driver Details Page</SubHeader>
@@ -116,8 +115,6 @@ export async function getStaticProps({ params }) {
       notFound: true,
     }
   }
-
-  console.log(driver)
 
   return {
     props: {
