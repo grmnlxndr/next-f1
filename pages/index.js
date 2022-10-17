@@ -12,7 +12,7 @@ import Layout from '../components/ui/Layout'
 import { SubHeader } from '../components/ui/Text'
 import { getlastRaceResults } from '../lib/results'
 import { getNextRace } from '../lib/schedule'
-import { getCurrentStandings } from '../lib/standings'
+import { getStandings } from '../lib/standings'
 // import styles from '../styles/Home.module.css'
 
 export default function Home({
@@ -63,7 +63,7 @@ export default function Home({
 }
 
 export async function getStaticProps(context) {
-  const { driverStandings, constructorStandings } = await getCurrentStandings()
+  const { driverStandings, constructorStandings } = await getStandings('current')
   const nextRace = await getNextRace()
   const lastResults = await getlastRaceResults()
 

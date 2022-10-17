@@ -36,7 +36,11 @@ export const CONSTRUCTOR_STANDING_HEADER = (
 export const renderConstructor = (constructor) => (
   <tr key={constructor.constructorId}>
     <Td className={'text-center'}>{constructor.position}</Td>
-    <Td className={'text-center'}>{constructor.constructorName}</Td>
+    <Td className={'text-center'}>
+      <Link href={`/constructors/${constructor.constructorId}`}>
+        <a className={'hover:underline'}>{constructor.constructorName}</a>
+      </Link>
+    </Td>
     <Td className={'text-center'}>{constructor.wins}</Td>
     <Td className={'text-center'}>{constructor.points}</Td>
   </tr>
