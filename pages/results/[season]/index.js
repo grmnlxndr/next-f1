@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import SessionTable from '../../../components/sessions/SessionsTable'
 import StandingsTable, {
   CONSTRUCTOR_STANDING_HEADER,
@@ -16,9 +17,29 @@ export default function SessionRacesPage({
   driverStandings,
   constructorStandings,
 }) {
+  const season = Number(sessions[0].season)
+  const firstSeason = season <= 1950
+  const lastSeason = season >= new Date().getFullYear()
+
   return (
     <Layout>
-      <SubHeader className={'mb-5'}>Season {sessions[0].season}</SubHeader>
+      <SubHeader className={'mb-2'}>Season {season}</SubHeader>
+      <div className="flex flex-row justify-center gap-5 items-center mb-5">
+        {!firstSeason && (
+          <Link href={`/results/${season - 1}`}>
+            <a className="text-xs text-center text-gray-600 hover:underline">
+              View {season - 1}
+            </a>
+          </Link>
+        )}
+        {!lastSeason && (
+          <Link href={`/results/${season + 1}`}>
+            <a className="text-xs text-center text-gray-600 hover:underline">
+              View {season + 1}
+            </a>
+          </Link>
+        )}
+      </div>
       {driverStandings && driverStandings.length > 0 && (
         <Card className={'mb-5'}>
           <StandingsTable
