@@ -62,7 +62,9 @@ const RaceSnapshot = ({
             </Link>
           </p>
           <p className={classNames(styles.text, styles.time)}>
-            Race time: {dayjs(race.dateTime).format('l LT')}
+            {race.dateTime
+              ? `Race time: ${dayjs(race.dateTime).format('l LT')}`
+              : `Race date: ${dayjs(race.date).format('l')}`}
           </p>
         </div>
       </div>

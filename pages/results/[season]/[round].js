@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import RaceSnapshot from '../../../components/schedule/RaceSnapshot'
 import Card from '../../../components/ui/Card'
 import Layout from '../../../components/ui/Layout'
@@ -10,7 +11,12 @@ import {
 export default function ResultsDetailsPage({ result }) {
   return (
     <Layout>
-      <SubHeader className={'mb-5'}>Result Details</SubHeader>
+      <SubHeader className={'mb-1'}>Result Details</SubHeader>
+      <Link href={`/results/${result.season}`}>
+        <a className="text-xs block text-center mx-auto mb-5 text-gray-600 hover:underline">
+          View season {result.season}
+        </a>
+      </Link>
       <Card>
         <RaceSnapshot
           race={result}

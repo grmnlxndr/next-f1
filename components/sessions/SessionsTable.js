@@ -1,17 +1,19 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import classNames from 'classnames'
+import { findFlagUrlByCountryName } from 'country-flags-svg'
+import dayjs from 'dayjs'
 
 const RaceRow = ({ race }) => {
   const raceName = `${race.season} ${race.name}`
 
   return (
     <>
-      {race.Flag && (
-        <div className={'relative h-12 lg:h-14 w-14 lg:w-16'}>
+      {race.country && (
+        <div className={'relative h-12 lg:h-14 w-18 lg:w-20'}>
           <Image
             className={'rounded'}
-            src={race.Flag.url}
+            src={findFlagUrlByCountryName(race.country)}
             alt={raceName}
             layout={'fill'}
             objectFit={'cover'}
@@ -20,13 +22,17 @@ const RaceRow = ({ race }) => {
       )}
       <div
         className={classNames(
-          { 'pl-16': !race.Flag },
-          { 'lg:pl-18': !race.Flag },
+          { 'pl-18': !race.country },
+          { 'lg:pl-20': !race.country },
           { italic: !race.isPast },
           'font-medium text-teal-800 lg:text-xl'
         )}
       >
         {raceName}
+        <br />
+        <span className={'text-xs text-gray-600 font-light'}>
+          {dayjs(race.date).format('MMMM D')}
+        </span>
       </div>
     </>
   )
